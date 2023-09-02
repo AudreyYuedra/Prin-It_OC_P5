@@ -1,2 +1,2 @@
-# Prin-It_OC_P5
+# Print-It_OC_P5
 Premiers pas JavaScript
