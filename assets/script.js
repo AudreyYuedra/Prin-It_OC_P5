@@ -1,3 +1,4 @@
+// Liste des slides du carrousel
 const slides = [
 	{
 		"image":"slide1.jpg",
@@ -17,12 +18,56 @@ const slides = [
 	}
 ]
 
+// Récupération les id du carrousel
 let arrowLeft = document.getElementById("arrowLeft")
-arrowLeft.addEventListener("click", function () {
+let arrowRight = document.getElementById("arrowRight")
+let dotSlide = document.getElementById("dots")
+
+
+// Changer le slide au click des flèches
+arrowLeft.addEventListener("click", function() {
 	console.log("Vous avez cliqué sur la flèche gauche.")
 })
 
-let arrowRight = document.getElementById("arrowRight");
-arrowRight.addEventListener("click", function () {
+arrowRight.addEventListener("click", function() {
 	console.log("Vous avez cliqué sur la flèche droite.")
 })
+
+// Ajouter les bullet points au carrousel
+function addDots (index) {
+	console.log("add new dot", index)
+	/* (premier instruction crer variable newdots qui créer 
+		un élément div à l'intérieur de dotsSlide)*/
+		/*bien utiliser appendChild puis createElement div*/
+		/*faire un check condition index0 change attribut par .selected dans newDots*/
+}
+
+for (var i = 0; i< slides.length; i++) {
+	addDots(i)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Lier les dots aux bons slides
+
+
+// Ajouter une classe à dot quand le slide est affiché
+
+
+/*arrowLeft.addEventListener("click", function () {
+	console.log("Vous avez cliqué sur la flèche gauche.")
+})*/
