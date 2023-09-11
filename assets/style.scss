@@ -105,14 +105,13 @@ h3 {
 	width: 100%;
 	min-height: 470px;
 	position: relative;
-    & .arrow {
+    & .arrow_left {
         position: absolute;
-        & .arrow_left {
-            left: 10px;
-        }
-        & .arrow_right {
-            right: 10px;
-        }
+        left: 10px;
+    }
+    & .arrow_right {
+        position: absolute;
+        right: 10px;
     }
     & .banner-img {
         position: absolute;
@@ -152,6 +151,7 @@ h3 {
         }
     }
 }
+
 
 
 //About-Us

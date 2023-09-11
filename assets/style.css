@@ -99,13 +99,12 @@ h3 {
   min-height: 470px;
   position: relative;
 }
-.banner .arrow {
+.banner .arrow_left {
   position: absolute;
-}
-.banner .arrow .arrow_left {
   left: 10px;
 }
-.banner .arrow .arrow_right {
+.banner .arrow_right {
+  position: absolute;
   right: 10px;
 }
 .banner .banner-img {
