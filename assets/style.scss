@@ -31,27 +31,31 @@ body {
     line-height: 1;
 }
 
+section {
+    margin-block: 6em;
+}
+
 .container {
-	max-width: 1440px;
-	margin-inline:auto;
-	padding-inline: 5%;
+    max-width: 1440px;
+    margin-inline:auto;
+    padding-inline: 5%;
 }
 
 .btn {
-	background-color: var(--primary-color) ;
-	padding: 16px 32px;
-	margin-inline:5px;
-	border-radius: 5px;
-	color: white;
-	text-decoration: none;
-}
+    background-color: var(--primary-color) ;
+    padding: 16px 32px;
+    margin-inline:5px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}  
 
 .devis {
     background-color: var(--secondary-color);
 }
 
 ul {
-	list-style: none;
+    list-style: none;
 }
 
 p,
@@ -93,7 +97,61 @@ h3 {
 
 
 //Carrousel
-
+.banner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 470px;
+	position: relative;
+    & .arrow {
+        position: absolute;
+        & .arrow_left {
+            left: 10px;
+        }
+        & .arrow_right {
+            right: 10px;
+        }
+    }
+    & .banner-img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        object-fit: cover;
+        object-position: center;
+    }
+    & p {
+        font-weight: var(--main-font-weight);
+        font-size: 50px;
+        line-height: 66px;
+        color: var(--secondary-txt-color);
+        text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        & span {
+            font-weight: 400;
+            font-size: 30px;
+        }
+    }
+    & .dots {
+        position: absolute;
+        bottom: 40px;
+        display: flex;
+        & .dot {
+            margin-inline: 5px;
+            width: 13px;
+            height: 13px;
+            background-color: #ffffff00;
+            border: 3px solid #fff;
+            border-radius: 100%;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);;
+        }
+        & .dot_selected {
+            background-color: #fff;
+        }
+    }
+}
 
 
 //About-Us

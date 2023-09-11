@@ -28,6 +28,10 @@ body {
   line-height: 1;
 }
 
+section {
+  margin-block: 6em;
+}
+
 .container {
   max-width: 1440px;
   margin-inline: auto;
@@ -84,6 +88,62 @@ h3 {
   font-weight: var(--main-font-weight);
   font-size: 22px;
   margin-block: 1em;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 470px;
+  position: relative;
+}
+.banner .arrow {
+  position: absolute;
+}
+.banner .arrow .arrow_left {
+  left: 10px;
+}
+.banner .arrow .arrow_right {
+  right: 10px;
+}
+.banner .banner-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  object-position: center;
+}
+.banner p {
+  font-weight: var(--main-font-weight);
+  font-size: 50px;
+  line-height: 66px;
+  color: var(--secondary-txt-color);
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+.banner p span {
+  font-weight: 400;
+  font-size: 30px;
+}
+.banner .dots {
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+}
+.banner .dots .dot {
+  margin-inline: 5px;
+  width: 13px;
+  height: 13px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 3px solid #fff;
+  border-radius: 100%;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.banner .dots .dot_selected {
+  background-color: #fff;
 }
 
 .about-us {
