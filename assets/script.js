@@ -1,4 +1,4 @@
-// Liste des slides du carrousel
+/*** Liste des slides du carrousel ***/
 const slides = [
 	{
 		"image":"slide1.jpg",
@@ -18,56 +18,67 @@ const slides = [
 	}
 ]
 
-// Récupération les id du carrousel
-let arrowLeft = document.getElementById("arrowLeft")
-let arrowRight = document.getElementById("arrowRight")
-let dotSlide = document.getElementById("dots")
+/*** Récupération id des élèments du fichier html ***/
+const arrowLeft = document.getElementById("arrowLeft")
+const arrowRight = document.getElementById("arrowRight")
+const dotSlide = document.getElementById("dotSlide")	// conteneur bullets points
+const images = document.getElementsByClassName("banner-img")
 
+/*** Variables ***/
+let currentImg = 0
+let currentTagLine = 0
 
-// Changer le slide au click des flèches
-arrowLeft.addEventListener("click", function() {
-	console.log("Vous avez cliqué sur la flèche gauche.")
-})
-
-arrowRight.addEventListener("click", function() {
-	console.log("Vous avez cliqué sur la flèche droite.")
-})
-
-// Ajouter les bullet points au carrousel
-function addDots (index) {
+/*** Ajouter les bullet points au carrousel ***/
+function addDots (index) {		// !!!! les bullets ne sont pas visibles sur le site (étape 3 non terminée) !!!!
 	console.log("add new dot", index)
-	/* (premier instruction crer variable newdots qui créer 
-		un élément div à l'intérieur de dotsSlide)*/
-		/*bien utiliser appendChild puis createElement div*/
-		/*faire un check condition index0 change attribut par .selected dans newDots*/
+
+	let newDot = document.createElement("div")		// créer un nouvel élèment "div" pour dot
+	dotSlide.appendChild(newDot)              		// placer "div" dans élèment "dotSlide"
+	newDot.classList.add("dot")						// ajouter sélecteur css ".dot" à "div"
+
+	if (index === currentImg) {                   	// SI slide affichée sur le site
+		newDot.classList.add("dot_selected")  		// ajouter class ".dot_selected" à "div"
+	} else {								   		// SINON 
+		newDot.classList.remove("dot_selected")		// enlever class ".dot_selected" à "div"
+	}
 }
 
-for (var i = 0; i< slides.length; i++) {
+for (let i = 0; i < slides.length; i++) {			// répétition création "div" selon nb slides
 	addDots(i)
 }
 
+/*** Comportement du carrousel ***/
+function nextImage() {
+	currentImg = currentImg + 1
+	if (currentImg >= slides.length) {
+		currentImg = 0
+	}
+	currentTagLine = currentTagLine + 1 
+	if (currentTagLine >= slides.length) {
+		currentTagLine = 0
+	}
+}
 
+function previousImg() {
+	slides[image] = currentImg - 1
+	if (currentImg <= slides.length) {
+		currentImg = 3
+	}
+	slides[tagLine] = currentTagLine - 1
+	if (currentTagLine <= slides.length) {
+		currentTagLine = 3
+	}
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Lier les dots aux bons slides
-
-
-// Ajouter une classe à dot quand le slide est affiché
-
-
-/*arrowLeft.addEventListener("click", function () {
+/*** Navigation du carrousel ***/					// évènement au click
+// Flèche de droite
+arrowRight.addEventListener("click", function() {
+    nextImage();
+	console.log("Vous avez cliqué sur la flèche droite.")
+})
+// Flèche de gauche
+arrowLeft.addEventListener("click", function() {
+    previousImg();
 	console.log("Vous avez cliqué sur la flèche gauche.")
-})*/
+})
+
