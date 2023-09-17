@@ -59,7 +59,7 @@ for (let i = 0; i < imageSlide.length; i++) {			// répétition création "div" 
 }
 
 /*** Comportement du carrousel ***/
-function showSlider () {
+function showSlider () {		//POSE PROB MAIS JE SAIS PAS POURQUOI !!!!
 	images = currentImg;
 	tag.innerHTML = currentTagLine;
 }
