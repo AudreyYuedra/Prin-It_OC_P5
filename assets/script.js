@@ -129,6 +129,7 @@ function showNext() {
 	counter ++
 	dotNext()
 	imgNext()
+	tagLineNext()
 
 	//défilement infini
 	if (counter >= slides.length) {
