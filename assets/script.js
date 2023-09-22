@@ -26,31 +26,43 @@ const dotSlide = document.getElementById("dotSlide");	// conteneur bullets point
 const banner = document.getElementsByClassName("banner-img");
 const tagLine = document.getElementsByClassName("banner > p");
 
-/*** Variables ***/
-//let i = 0;
-let currentImg = slides[0].image;
-let currentTagLine = slides[0].tagLine;
 
-/*** Ajouter les bullet points au carrousel ***/
-function addDots (index) {
+//********** VARIABLES **********
+
+let counter = 0;
+let arrayLength = slides.length;
+
+//let currentImg = slides[0].image;
+//let currentTagLine = slides[0].tagLine;
+
+
+// ********** FUNCTIONS **********
+
+// Ajouter les bullet points au carrousel
+function addDots(index) {
 	console.log("add new dot", index);
 
-	let newDot = document.createElement("div");			// créer un nouvel élèment "div" pour dot
-	dotSlide.appendChild(newDot);						// placer "div" dans élèment "dotSlide"
-	newDot.classList.add("dot");						// ajouter sélecteur css ".dot" à "div"
+	// créer un nouvel élèment "div" pour dot
+	let newDot = document.createElement("div");
+	// placer "div" dans élèment "dotSlide"
+	dotSlide.appendChild(newDot);
+	// ajouter sélecteur css ".dot" à "div"
+	newDot.classList.add("dot");
 
-	if (index === 0) {							// SI slide affichée sur le site
-		newDot.classList.add("dot_selected");			// ajouter class ".dot_selected" à "div"
-	} /*else {											// SINON 
+	// SI slide affichée sur le site
+	if (index === 0) {
+		// ajouter class ".dot_selected" à "div"
+		newDot.classList.add("dot_selected");
+	} 
+	
+	
+	/*else {											// SINON 
 		newDot.classList.remove("dot_selected");		// enlever class ".dot_selected" à "div"
 	}*/
 }
 
-for (let i = 0; i < slides.length; i++) {			// répétition création "div" selon nb slides
-	addDots(i);
-}
 
-function changeDots (index) {
+/*function changeDots (index) {
 	let index = addDots(index);						// récupérer l'index - 
 	console.log("dot recuperation");			// console.log
 	index++;									// ajouter index +1
@@ -61,14 +73,10 @@ function changeDots (index) {
 	}					//appliquer la classe dot_selected
 	//for () {}					// appliquer check entre 0 et 4
 
-}
+}*/
 
 /*** Comportement du carrousel ***/
-function showSlider () {		//POSE PROB MAIS JE SAIS PAS POURQUOI !!!!
-	images = currentImg;
-	tag.innerHTML = currentTagLine;
-}
-
+/*
 function next() {	
 								// avancer d'une image par click
 	currentImg++;
@@ -98,7 +106,7 @@ function previousImg() {								// reculer d'une image par click
 
 	showSlider();
 }
-
+*/
 /*** Navigation du carrousel ***/						// évènement au click
 // Flèche de droite
 arrowRight.addEventListener("click", function() {
@@ -110,3 +118,11 @@ arrowLeft.addEventListener("click", function() {
     previousImg(currentImg, currentTagLine);
 	console.log("Vous avez cliqué sur la flèche gauche.");
 })
+
+
+// ********** OTHERS **********
+
+// Répétition création "div" selon le nombre de slides
+for (let i = 0; i < slides.length; i++) {			
+	addDots(i);
+}
