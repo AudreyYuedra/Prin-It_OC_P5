@@ -85,21 +85,16 @@ function tagLinePrevious () {
 }
 
 function showPrevious() {
-	//enlever la class "dot_selected" du dot plus affcihé
-	dot[counter].classList.remove("dot_selected")
+	counter --
+	dotPrevious()
+	imgPrevious()
+	tagLinePrevious()
 
 	counter --
 	//défilement infini
 	if (counter === -1) {
-		counter = arrayLength[3]
+		counter = slides[3]
 	}
-
-	//lien dossier images avec numérotation du slide
-	bannerImg.src = "./assets/images/slideshow/" + slides[counter].image;
-	//lien tableau tagLine avec numérotation du slide
-	tagLine.innerHTML = slides[counter].tagLine;
-	//ajouter class "dot-selected" au nouveau dot affiché
-	dot[counter].classList.add("dot-selected");
 }
 
 //*** Déplacer le slide à droite
