@@ -1,5 +1,7 @@
-/*** Liste des slides du carrousel ***/
-/*const slides = [
+// *********** CONSTANTS **********
+
+// Liste des slides du carrousel
+const slides = [
 	{
 		"image":"slide1.jpg",
 		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>"
@@ -16,28 +18,18 @@
 		"image":"slide4.png",
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
-];*/
-
-const imageSlide = ["slide1.jpg", "slide2.jpg", "slide3.jpg", "slide4.png"]
-const tagSlide = [
-	"Impressions tous formats <span>en boutique et en ligne</span>",
-	"Tirages haute définition grand format <span>pour vos bureaux et events</span>",
-	"Grand choix de couleurs <span>de CMJN aux pantones</span>",
-	"Autocollants <span>avec découpe laser sur mesure</span>"
-]
-
-
-/*** Récupération id des élèments du fichier html ***/
+];
+// Récupération id des élèments du fichier html
 const arrowLeft = document.getElementById("arrowLeft");
 const arrowRight = document.getElementById("arrowRight");
 const dotSlide = document.getElementById("dotSlide");	// conteneur bullets points
-let images = document.getElementsByClassName("banner-img");
-let tag = document.getElementsByClassName("banner p");
+const banner = document.getElementsByClassName("banner-img");
+const tagLine = document.getElementsByClassName("banner > p");
 
 /*** Variables ***/
 //let i = 0;
-let currentImg = imageSlide[0];
-let currentTagLine = tagSlide[0];
+let currentImg = slides[0].image;
+let currentTagLine = slides[0].tagLine;
 
 /*** Ajouter les bullet points au carrousel ***/
 function addDots (index) {
@@ -47,15 +39,28 @@ function addDots (index) {
 	dotSlide.appendChild(newDot);						// placer "div" dans élèment "dotSlide"
 	newDot.classList.add("dot");						// ajouter sélecteur css ".dot" à "div"
 
-	if (index === currentImg) {							// SI slide affichée sur le site
+	if (index === 0) {							// SI slide affichée sur le site
 		newDot.classList.add("dot_selected");			// ajouter class ".dot_selected" à "div"
-	} else {											// SINON 
+	} /*else {											// SINON 
 		newDot.classList.remove("dot_selected");		// enlever class ".dot_selected" à "div"
-	}
+	}*/
 }
 
-for (let i = 0; i < imageSlide.length; i++) {			// répétition création "div" selon nb slides
+for (let i = 0; i < slides.length; i++) {			// répétition création "div" selon nb slides
 	addDots(i);
+}
+
+function changeDots (index) {
+	let index = addDots(index);						// récupérer l'index - 
+	console.log("dot recuperation");			// console.log
+	index++;									// ajouter index +1
+	console.log("index dot +1");									// console.log
+	getElementsByClassName("dot_selected");	// getclassname + 
+	if (index++) {
+
+	}					//appliquer la classe dot_selected
+	//for () {}					// appliquer check entre 0 et 4
+
 }
 
 /*** Comportement du carrousel ***/
@@ -64,14 +69,16 @@ function showSlider () {		//POSE PROB MAIS JE SAIS PAS POURQUOI !!!!
 	tag.innerHTML = currentTagLine;
 }
 
-function nextImage() {									// avancer d'une image par click
+function next() {	
+								// avancer d'une image par click
 	currentImg++;
-	if (currentImg >= imageSlide.length) {
+	console.log()
+	if (currentImg >= slides.length) {
 		currentImg = 0;
 	}
 	
 	currentTagLine++;
-	if (currentTagLine >= tagSlide.length) {
+	if (currentTagLine >= slides.length) {
 		currentTagLine = 0;
 	}
 
