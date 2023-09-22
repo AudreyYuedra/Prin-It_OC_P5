@@ -60,7 +60,51 @@ function addDots(index) {
 		newDot.classList.remove("dot_selected");		// enlever class ".dot_selected" à "div"
 	}*/
 }
+// Déplacer le slide à gauche
+function goPrevious() {
+	counter --;
+	//enlever la class "dot_selected" du dot d'origine
+	dot[counter].classList.remove("dot_selected");
 
+	if (counter === -1) {
+		counter = arrayLength -1;
+	}
+
+	//lien dossier images avec numérotation du slide
+	banner.src = "./assets/images/slideshow/" + slides[counter].image;
+	//lien tableau tagLine avec numérotation du slide
+	tagLine.innerHTML = slides[counter].tagLine;
+	//ajouter class "dot-selected" au nouveau dot affiché
+	dot[counter].classList.add("dot-selected");
+}
+// Déplacer le slide à droite
+function goPrevious() {
+	counter ++;
+	//enlever la class "dot_selected" du dot d'origine
+	dot[counter].classList.remove("dot_selected");
+
+	if (counter === arrayLength) {
+		counter = 0;
+	}
+
+	//lien dossier images avec numérotation du slide
+	banner.src = "./assets/images/slideshow/" + slides[counter].image;
+	//lien tableau tagLine avec numérotation du slide
+	tagLine.innerHTML = slides[counter].tagLine;
+	//ajouter class "dot-selected" au nouveau dot affiché
+	dot[counter].classList.add("dot-selected");
+}
+//Activer le mouvement du slide au click sur les flèches
+function moveSlide() {
+	//liens paramètres slide d'origine
+	banner.src = "./assets/images/slideshow/" + slides[0].image;
+	tagLine.innerHTML = slides[0].tagLine;
+	dot[0].classList.add("dot-selected");
+
+	arrowLeft.addEventListener("click", goPrevious);
+	arrowRight.addEventListener("click", goNext);
+	console.log("Vous avez cliqué sur la flèche.")
+}
 
 /*function changeDots (index) {
 	let index = addDots(index);						// récupérer l'index - 
@@ -109,15 +153,12 @@ function previousImg() {								// reculer d'une image par click
 */
 /*** Navigation du carrousel ***/						// évènement au click
 // Flèche de droite
-arrowRight.addEventListener("click", function() {
-    nextImage(currentImg, currentTagLine);
-	console.log("Vous avez cliqué sur la flèche droite.");
-})
+
 // Flèche de gauche
-arrowLeft.addEventListener("click", function() {
+/*arrowLeft.addEventListener("click", function() {
     previousImg(currentImg, currentTagLine);
 	console.log("Vous avez cliqué sur la flèche gauche.");
-})
+})*/
 
 
 // ********** OTHERS **********
