@@ -18,18 +18,18 @@ const slides = [
 		"image":"slide4.png",
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
-]
+];
 // Récupération id des élèments du fichier html
-const arrowLeft = document.getElementById("arrowLeft")
-const arrowRight = document.getElementById("arrowRight")
-const dotSlide = document.getElementById("dotSlide")	// conteneur bullets points
-const bannerImg = document.getElementsByClassName("banner-img")
-const tagLine = document.getElementsByClassName("banner > p")
+const arrowLeft = document.getElementById("arrowLeft");
+const arrowRight = document.getElementById("arrowRight");
+const dotSlide = document.getElementById("dotSlide");	// conteneur bullets points
+const bannerImg = document.querySelector(".banner-img");
+const tagLine = document.querySelector(".banner p");
 
 
 //********** VARIABLES **********
 
-let counter = 0
+let counter = 0;
 
 
 // ********** FUNCTIONS **********
@@ -50,91 +50,80 @@ function addDots(i) {
 		// ajouter class ".dot_selected" à "div"
 		dot.classList.add("dot_selected")
 
-		console.log("dot " + counter + " affiché")
-	} 	/*else {											// SINON 
-		newDot.classList.remove("dot_selected");		// enlever class ".dot_selected" à "div"
-	}*/
+		console.log("dot " + i + " affiché")	//ici valeur index utilisé
+	}
 }
 
 //*** Déplacer le slide à gauche
 function dotPrevious (index) {
 	//lien récupération dot
-	dot[counter] = slides[counter]
+	const dots = document.querySelectorAll(".dot");	//const car plusieurs élèments
 
-	index --
-	//nouveau dot ajout .dot_selected
-	dot[counter --].classList.add("dot_selected")
 	//.dot_selected annulé
-	dot[counter].classList.remove("dot_selected")
+	dot[counter].classList.remove("dot_selected");
+	counter--;
+	if (counter < 0) {
+		//on boucle sur le denrier élèment
+		counter = slides.length -1;
+	}
+	//nouveau dot ajout .dot_selected
+	dot[counter].classList.add("dot_selected");
 
-	console.log("dot " + counter + " affiché")
+	console.log("dot " + counter + " affiché");
 }
 
 function imgPrevious() {
-	bannerImg.src = "./assets/images/slideshow/" + slides[counter].image
+	bannerImg.src = "./assets/images/slideshow/" + slides[counter].image;
 
-	slides.image --
-	console.log("image " + slides[counter].image + " affiché")
+	console.log("image " + slides[counter].image + " affiché");
 }
 
 function tagLinePrevious () {
-	tagLine.innerHTML = slides[counter].tagLine
+	tagLine.innerHTML = slides[counter].tagLine;
 
-	slides.tagLine --
-	console.log("tagLine " + slides[counter].tagLine + " affiché")
+	console.log("tagLine " + slides[counter].tagLine + " affiché");
 }
 
 function showPrevious() {
-	counter --
 	dotPrevious()
 	imgPrevious()
 	tagLinePrevious()
-
-	counter --
-	//défilement infini
-	if (counter === -1) {
-		counter = slides[3]
-	}
 }
 
 //*** Déplacer le slide à droite
 function dotNext (index) {
-	//lien récupération dot
-	dot[counter] = slides[counter]
+	//récupération élément dot
+	const dots = document.querySelectorAll(".dot");
+	
+	dots[counter].classList.remove("dot_selected");
+	counter++;
+	if (counter >= slides.length) {
+		//on boucle au premier élèment
+		counter = 0;
+	}
 
-	index ++
-	//nouveau dot ajout .dot_selected
-	dot[counter ++].classList.add("dot_selected")
-	//.dot_selected annulé
-	dot[counter].classList.remove("dot_selected")
+	//ajout calss
+	dots[counter].classList.add("dot_selected");
 
-	console.log("dot " + counter + " affiché")
+	console.log("dot " + counter + " affiché");
 }
 
 function imgNext() {
-	bannerImg.src = "./assets/images/slideshow/" + slides[counter].image
+	bannerImg.src = "./assets/images/slideshow/" + slides[counter].image;
 
-	slides.image ++
-	console.log("image " + slides[counter].image + " affiché")
+	console.log("image " + slides[counter].image + " affiché");
 }
 
 function tagLineNext () {
-	tagLine.innerHTML = slides[counter].tagLine
+	tagLine.innerHTML = slides[counter].tagLine;
 
-	slides.tagLine ++
-	console.log("tagLine " + slides[counter].tagLine + " affiché")
+	console.log("tagLine " + slides[counter].tagLine + " affiché");
 }
 
 function showNext() {
-	counter ++
-	dotNext()
-	imgNext()
-	tagLineNext()
-
-	//défilement infini
-	if (counter >= slides.length) {
-		counter = 0
-	}
+	dotNext();
+	imgNext();
+	tagLineNext();
 }
 
 
@@ -144,10 +133,6 @@ function showNext() {
 for (let i = 0; i < slides.length; i++) {			
 	addDots(i)
 }
-
-//***
-const dot = document.querySelectorAll(".dot")
-
 
 //*** Activer le mouvement du slide au click sur les flèches
 arrowLeft.addEventListener("click", function() {

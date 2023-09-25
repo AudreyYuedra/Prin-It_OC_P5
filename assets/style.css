@@ -124,6 +124,7 @@ h3 {
   text-align: center;
 }
 .banner p span {
+  display: block;
   font-weight: 400;
   font-size: 30px;
 }
